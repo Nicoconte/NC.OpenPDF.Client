@@ -1,0 +1,29 @@
+<div class="register-form-container">
+    <div class="register-form">
+        <form [formGroup]="userRegisterForm">
+
+            <h1 class="text-left">Convert <br> your files <br> right now! 💯</h1>
+            
+            <input type="text" class="form-control mt-5" formControlName="username" placeholder="Username">
+            
+            <input type="password" class="form-control mt-4" formControlName="password" placeholder="Password">
+
+            <div class="form-check mt-4">
+                <input (change)="onCheckboxChange($event)" type="checkbox" class="form-check-input" id="checkPrivacyPolicy">
+                <label class="form-check-label" for="checkPrivacyPolicy">I agree with <a href="#">privacy policy</a></label>
+            </div>
+
+            <button (click)="signUp()" [disabled]="isDisabled()" class="btn mt-4">Sign Up</button>
+
+            <span class="text-danger" *ngIf="this.userRegisterForm.get('username')?.errors?.minlength">
+                Username must have 5 characters at least
+            </span>
+
+            <span class="text-danger" *ngIf="userRegisterForm.get('password')?.errors?.minlength">
+                Password must have 8 characters at least
+            </span>
+
+        </form>
+    </div>
+
+</div>

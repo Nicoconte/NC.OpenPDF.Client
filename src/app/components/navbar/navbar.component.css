@@ -1,0 +1,38 @@
+.navbar-container  {
+    width:100%;
+    height:10%;
+    display: flex;
+    flex-direction: row;
+    z-index: 100000;
+}
+
+.navbar-logo {
+    width: 30%;
+    height:100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left:40px;
+}
+
+.navbar-logo h3 {
+    font-family: 'Pacifico', cursive;
+}
+
+.navbar-items {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navbar-items a {
+    font-size:17px;
+    color: rgb(73, 117, 168);
+}
+
+
+.navbar-items a:hover {
+    color: rgb(33, 72, 116);
+}

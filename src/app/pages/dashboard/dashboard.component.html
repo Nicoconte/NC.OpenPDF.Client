@@ -1,0 +1,30 @@
+<div class="dashboard-container">
+    
+    <div class="dashboard-upper-navbar">
+        <div class="dashboard-upper-navbar-btn">
+            <button (click)="open()" id="sidebar-opener" class="btn btn-info ml-3">
+                <i class="fa fa-bars"></i>
+            </button> 
+        </div>
+
+        <div class="dashboard-upper-navbar-content">
+            <button class="btn">
+                <i class="fa fa-arrow-circle-o-down"></i>
+            </button>
+        </div>
+
+    </div>  
+
+    <div class="dashboard-content-container">
+        
+        <div class="dashboard-sidebar-container">
+            <app-sidebar [isOpen]="sidebarState"></app-sidebar>
+        </div>
+
+        <div class="dashboard-content">
+            
+        </div>
+
+    </div>
+
+</div>

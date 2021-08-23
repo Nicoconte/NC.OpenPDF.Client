@@ -1,0 +1,15 @@
+<div class="login-form-container">
+    <div class="login-form">
+        <form [formGroup]="userLoginForm">
+
+            <h1>Let us <br> convert <br> your files! 🚀</h1>
+            
+            <input type="text" class="form-control mt-5" placeholder="Username" formControlName="username">
+            
+            <input type="password" class="form-control mt-4" placeholder="Password" formControlName="password">
+
+            <button (click)="signIn()" [disabled]="this.userLoginForm.get('username')?.errors?.required || this.userLoginForm.get('password')?.errors?.required" class="btn mt-3">Sign In</button>
+            
+        </form>
+    </div>
+</div>
