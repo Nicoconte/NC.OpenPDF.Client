@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DomService } from 'src/app/services/dom.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class SidebarComponent implements OnInit {
 
   @Input() isOpen: boolean = false;
 
-  constructor(private router: Router, private userService: UserService, private toast: ToastrService) { }
+  constructor(private router: Router, private userService: UserService, private domService: DomService, private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.setSidebarStylesByState(false); // Initial Styles (By default)
@@ -27,37 +28,19 @@ export class SidebarComponent implements OnInit {
   
   }
   
-  //Change Every style from the array of HTML Elements
-  //TODO: Create DomService and move this method
-  private changeNodeStyles(elements: any[]) {
-
-    elements.forEach(e => {
-
-      let nodes = document.querySelectorAll<HTMLElement>(e['className']);
-      let styleKeys = Object.keys(e['styles']); 
-
-      nodes.forEach(n => {
-        styleKeys.forEach(sk => {
-          n.style.setProperty(sk, e['styles'][sk])
-        })
-      })
-
-    })
-
-  }
-
+  
   public setSidebarStylesByState(state: boolean) {
 
     if (state) {
-      this.changeNodeStyles([
+      this.domService.changeStyles([
         {
-          className: ".dashboard-sidebar-container",
+          name: ".dashboard-sidebar-container",
           styles: {
             "width": "15%"
           }
         },
         {
-          className: ".sidebar-content",
+          name: ".sidebar-content",
           styles: {
             "display": "flex"
           }
@@ -65,15 +48,15 @@ export class SidebarComponent implements OnInit {
       ])
 
     } else {
-      this.changeNodeStyles([
+      this.domService.changeStyles([
         {
-          className: ".dashboard-sidebar-container",
+          name: ".dashboard-sidebar-container",
           styles: {
             "width": "5%"
           }
         },
         {
-          className: ".sidebar-content",
+          name: ".sidebar-content",
           styles: {
             "display": "none"
           }

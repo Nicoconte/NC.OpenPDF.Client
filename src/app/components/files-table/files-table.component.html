@@ -1,0 +1,42 @@
+<div class="files-table-container">
+
+
+    <table class='table table-striped' *ngIf='files.length <= 0'>
+        <thead>
+            <tr>
+                <td> - </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class='text-center'>
+                <span>There's no files <i class='fa fa-warning'></i></span>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table class='table table-striped' *ngIf='files.length > 0'> 
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Extension</td>
+                <td> </td>
+            </tr>
+        </thead>
+
+        <!-- ========================= -->
+        <tbody>
+            <tr *ngFor="let file of files">
+                <td>{{file.id}}</td>
+                <td>{{file.filename | slice:0:20 }}</td>
+                <td>{{file.extension}} </td>
+                <td>
+                    <app-download-btn fileId='{{file.id}}'></app-download-btn>
+                    <app-delete-file-btn fileId='{{file.id}}' (shouldUpdateEvent)='updateFileTable($event)'></app-delete-file-btn>
+                </td>
+            </tr>
+        </tbody>
+    
+    </table>
+</div>

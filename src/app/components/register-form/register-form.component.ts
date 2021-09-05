@@ -57,7 +57,7 @@ export class RegisterFormComponent implements OnInit {
       next: res => {
         if (res.status) {
           this.storageService.set('token', res?.token);
-
+          
           this.toast.success("User has been registered", "Good news!")
 
           setTimeout(() => {
