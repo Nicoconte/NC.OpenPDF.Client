@@ -10,16 +10,14 @@ import { StorageService } from './storage.service';
 export class DiskSpaceService {
   
   private baseURL: string = "/open-pdf/api/disk-space";
-  private token: string; 
+  private token: string = `Token ${this.storage.get('token')}`; 
 
-  constructor(private http: HttpClient, private storage: StorageService) { 
-    this.token = `Token ${this.storage.get('token')}`;
-  }
+  constructor(private http: HttpClient, private storage: StorageService) { }
   
   public get(): Observable<any> {
     return this.http.get<IDiskSpace>(`${this.baseURL}/info/`, {
       headers: new HttpHeaders({
-        'Authorization': this.token
+        'Authorization': `Token ${this.storage.get('token')}`
       })
     })
   }

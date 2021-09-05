@@ -10,11 +10,9 @@ import { StorageService } from './storage.service';
 export class FileService {
 
   private baseURL: string = "/open-pdf/api/files";
-  private token: string; 
+  private token: string = `Token ${this.storage.get('token')}`; 
 
-  constructor(private http: HttpClient, private storage: StorageService) { 
-    this.token = `Token ${this.storage.get('token')}`;
-  }
+  constructor(private http: HttpClient, private storage: StorageService) { }
 
   public prepareDownloadPrompt(blob: any) {
     let link = document.createElement("a");
@@ -30,7 +28,7 @@ export class FileService {
   public list(): Observable<any> {
     return this.http.get<IFile>(`${this.baseURL}/all/`, {
       headers: new HttpHeaders({
-        'Authorization': this.token
+        'Authorization': `Token ${this.storage.get('token')}`
       })
     });
   }
@@ -38,7 +36,7 @@ export class FileService {
   public delete(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseURL}/remove/${id}/`, {
       headers: new HttpHeaders({
-        'Authorization': this.token
+        'Authorization': `Token ${this.storage.get('token')}`
       })
     })
   }
@@ -56,7 +54,7 @@ export class FileService {
   public upload(formData: any): Observable<any> {
     return this.http.post<any>(`${this.baseURL}/upload/`, formData, {
       headers: new HttpHeaders({ 
-        'Authorization': this.token
+        'Authorization': `Token ${this.storage.get('token')}`
       })
     })
   }
