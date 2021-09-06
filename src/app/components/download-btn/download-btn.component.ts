@@ -9,7 +9,8 @@ import { FileService } from 'src/app/services/file.service';
 })
 export class DownloadBtnComponent implements OnInit {
 
-  @Input() fileId: string = "0";
+  @Input() filename: string = "";
+  @Input() fileId: number = 0;
   @Input() classes: string = "btn btn-sm btn-info"; // Default bootstrap styling
 
   constructor(private fileService: FileService, private toastService: ToastrService) { }
@@ -18,13 +19,13 @@ export class DownloadBtnComponent implements OnInit {
   }
 
   public downloadFile() {
-    this.fileService.download(Number(this.fileId)).subscribe({
+    this.fileService.download(this.fileId).subscribe({
       next: res => {
-        
+
         if ('status' in res) {
           this.toastService.error(res.reason, "Oh no");
         } else {
-          //this.fileService.prepareDownloadPrompt(res);        
+          this.fileService.prepareDownloadPrompt(this.filename, res);        
         }
 
       },

@@ -34,8 +34,8 @@
                 <td>{{file.size == 0 ? "< 0" : file.size}} MB</td>
                 <td>{{formatToDate(file.uploaded_at)}}</td>
                 <td>
-                    <app-download-btn fileId='{{file.id}}'></app-download-btn>
-                    <app-delete-file-btn fileId='{{file.id}}' (shouldUpdateEvent)='updateFileTable($event)'></app-delete-file-btn>
+                    <app-download-btn [filename]='file.filename' [fileId]='file.id'></app-download-btn>
+                    <app-delete-file-btn [fileId]='file.id' (shouldUpdateEvent)='updateFileTable($event)'></app-delete-file-btn>
                 </td>
             </tr>
         </tbody>

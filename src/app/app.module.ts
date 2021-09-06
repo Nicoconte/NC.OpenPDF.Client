@@ -25,6 +25,8 @@ import { DeleteFileBtnComponent } from './components/delete-file-btn/delete-file
 import { DiskSpaceBarComponent } from './components/disk-space-bar/disk-space-bar.component';
 import { SpinnerLoaderComponent } from './components/spinner-loader/spinner-loader.component';
 import { DashboardDefaultSectionComponent } from './components/dashboard-default-section/dashboard-default-section.component';
+import { ActionCardComponent } from './components/action-card/action-card.component';
+import { PdfFilesSectionComponent } from './components/pdf-files-section/pdf-files-section.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { DashboardDefaultSectionComponent } from './components/dashboard-default
     DiskSpaceBarComponent,
     SpinnerLoaderComponent,
     DashboardDefaultSectionComponent,
+    ActionCardComponent,
+    PdfFilesSectionComponent,
   ],
   imports: [
     BrowserModule,

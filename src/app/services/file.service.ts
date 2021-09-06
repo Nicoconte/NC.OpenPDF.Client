@@ -10,19 +10,25 @@ import { StorageService } from './storage.service';
 export class FileService {
 
   private baseURL: string = "/open-pdf/api/files";
-  private token: string = `Token ${this.storage.get('token')}`; 
+
+  private downloadRequestOptions: {} = {
+    headers: new HttpHeaders().append('Authorization', `Token ${this.storage.get('token')}`),
+    responseType: 'blob'
+  }
 
   constructor(private http: HttpClient, private storage: StorageService) { }
 
-  public prepareDownloadPrompt(blob: any) {
+  public prepareDownloadPrompt(filename: string, blob: any) {
     let link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+
+    URL.revokeObjectURL(link.href);
   }
 
   public download(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseURL}/download/${id}/`, {
-      headers: new HttpHeaders()
-    })
+    return this.http.get<any>(`${this.baseURL}/download/${id}/`, this.downloadRequestOptions)
   }
 
   public list(): Observable<any> {

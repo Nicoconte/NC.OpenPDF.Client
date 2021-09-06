@@ -9,7 +9,7 @@ import { FileService } from 'src/app/services/file.service';
 })
 export class DeleteFileBtnComponent implements OnInit {
 
-  @Input() fileId: string = "0";
+  @Input() fileId: number = 0;
   @Input() classes: string = "btn btn-sm btn-danger ml-2"; // Default bootstrap styling
   @Input() icon: string = "fa fa-trash"
 
@@ -21,7 +21,7 @@ export class DeleteFileBtnComponent implements OnInit {
   }
 
   public deleteFile() {
-    this.fileService.delete(Number(this.fileId)).subscribe((res) => {
+    this.fileService.delete(this.fileId).subscribe((res) => {
       if (res.status) {
         this.toastService.success("Deleted!", "Hellyeah :)");
         this.shouldUpdateEvent.emit(true);        
