@@ -1,9 +1,10 @@
 <div class="disk-space-bar-container mt-4">
-    <i class='fa fa-hdd-o'></i> 
+
+    <span>💾</span>
 
     <span class='ml-2'>Space used {{diskSpaceInfo.space_used}} MB of {{diskSpaceInfo.limit}} MB</span>
 
-    <div class='progress'>
+    <div class='progress mt-1'>
         <div id='disk-space-progressbar' class='progress-bar text-white {{barBgColor}}' role='progressbar' style="width:0%" value='0' min='0' max='100'></div>
     </div>
 </div>

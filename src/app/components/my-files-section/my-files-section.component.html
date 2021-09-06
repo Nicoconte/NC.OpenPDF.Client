@@ -5,12 +5,12 @@
 
             <div class="my-files-disk-space">
                 <div class='w-75 h-50'>
-                    <app-disk-space-bar [reloadBar]='updateRequired'></app-disk-space-bar>
+                    <app-disk-space-bar [refreshBar]='updateBar'></app-disk-space-bar>
                 </div>
             </div>
                         
             <div class="my-files-file-form">
-                <app-files-form (shouldUpdateEvent)='updateTable($event)'></app-files-form>
+                <app-files-form (shouldUpdateEvent)='sendUpdateToTable($event)' (shouldUpdateEvent)='sendUpdateToBar($event)'></app-files-form>
             </div>
         
         </div>
@@ -19,7 +19,7 @@
     <hr>
 
     <div style='width:70%; height:100%; padding:15px 15px;'>
-        <app-files-table [reloadTable]='updateRequired'></app-files-table>
+        <app-files-table [refreshTable]='updateTable' (shouldUpdateEvent)='sendUpdateToBar($event)'></app-files-table>
     </div>
 
 </div>

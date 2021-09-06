@@ -18,19 +18,21 @@
     <table class='table table-striped' *ngIf='files.length > 0'> 
         <thead>
             <tr>
-                <td>ID</td>
                 <td>Name</td>
                 <td>Extension</td>
-                <td> </td>
+                <td>Size</td>
+                <td>Upload date</td>
+                <td></td>
             </tr>
         </thead>
 
         <!-- ========================= -->
         <tbody>
             <tr *ngFor="let file of files">
-                <td>{{file.id}}</td>
                 <td>{{file.filename | slice:0:20 }}</td>
                 <td>{{file.extension}} </td>
+                <td>{{file.size == 0 ? "< 0" : file.size}} MB</td>
+                <td>{{formatToDate(file.uploaded_at)}}</td>
                 <td>
                     <app-download-btn fileId='{{file.id}}'></app-download-btn>
                     <app-delete-file-btn fileId='{{file.id}}' (shouldUpdateEvent)='updateFileTable($event)'></app-delete-file-btn>

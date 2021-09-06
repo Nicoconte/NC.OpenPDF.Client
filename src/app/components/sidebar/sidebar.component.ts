@@ -32,19 +32,20 @@ export class SidebarComponent implements OnInit {
   public setSidebarStylesByState(state: boolean) {
 
     if (state) {
-      this.domService.changeStyles([
+      this.domService.changeStyles([       
         {
           name: ".dashboard-sidebar-container",
           styles: {
             "width": "15%"
           }
-        },
+        },   
         {
           name: ".sidebar-content",
           styles: {
             "display": "flex"
-          }
-        }
+          },
+          delay:150
+        }, 
       ])
 
     } else {

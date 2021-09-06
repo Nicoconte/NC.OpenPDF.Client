@@ -7,7 +7,7 @@
 .dashboard-upper-navbar {
     width:100%;
     height: 8%;
-    background-color: rgb(50, 103, 163);
+    background-color: #0B5D69;
     display: flex;
     flex-direction: row;
 }
@@ -21,11 +21,16 @@
 }
 
 .dashboard-upper-navbar-btn button {
-    background-color: rgb(73, 117, 168);
+    background-color: #73A2AC;
+    border:1px solid transparent;
 }
 
 .dashboard-upper-navbar-btn button:hover, .dashboard-upper-navbar-content button:hover {
-    background-color: rgb(124, 155, 190);
+    background-color: #FBAA82;
+}
+
+.dashboard-upper-navbar-btn button:focus, .dashboard-upper-navbar-content button:focus {
+    border:0px solid transparent;
 }
 
 .dashboard-upper-navbar-content {
@@ -37,7 +42,7 @@
 }
 
 .dashboard-upper-navbar-content button {
-    background-color: rgb(73, 117, 168);
+    background-color: #73A2AC;
     border-radius: 50%;
     color:white;
     margin-right:35px;

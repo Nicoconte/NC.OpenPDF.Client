@@ -1,7 +1,9 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import IFile from 'src/app/interfaces/files.interface';
 import { FileService } from 'src/app/services/file.service';
+
+import { convertISOToDate } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-files-table',
@@ -10,7 +12,9 @@ import { FileService } from 'src/app/services/file.service';
 })
 export class FilesTableComponent implements OnInit {
 
-  @Input() reloadTable: boolean = false; 
+  @Input() refreshTable: boolean = false; 
+
+  @Output() shouldUpdateEvent = new EventEmitter();
 
   public files: Array<IFile>;
 
@@ -23,16 +27,20 @@ export class FilesTableComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    this.reloadTable = changes['reloadTable'].currentValue;
-    if (this.reloadTable) {
+    this.refreshTable = changes['refreshTable'].currentValue;
+    if (this.refreshTable) {
       this.listFiles();
     }
+  }
+
+  public formatToDate(date: string) { 
+    return convertISOToDate(date);
   }
 
   public updateFileTable(shouldUpdate: any) {
     if (shouldUpdate) {
       this.listFiles()
+      this.shouldUpdateEvent.emit(true);
     }
   }
 

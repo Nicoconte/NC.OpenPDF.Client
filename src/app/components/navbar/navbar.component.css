@@ -29,10 +29,10 @@
 
 .navbar-items a {
     font-size:17px;
-    color: rgb(73, 117, 168);
+    color: #0B5D69;
 }
 
 
 .navbar-items a:hover {
-    color: rgb(33, 72, 116);
+    color: #FBAA82;
 }

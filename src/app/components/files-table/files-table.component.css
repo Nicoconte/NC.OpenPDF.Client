@@ -12,3 +12,17 @@
 .files-table-container::-webkit-scrollbar {
     display: none;
 }
+
+.table > thead {
+    font-weight: 500;
+}
+
+.table > tbody {
+    color:gray;
+    font-weight: 500;
+}
+
+/* .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #FBAA82;
+    color:white;
+ } */

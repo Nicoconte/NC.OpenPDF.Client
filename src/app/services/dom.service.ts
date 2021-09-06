@@ -9,10 +9,11 @@ export class DomService {
   
   /**
    * Change the styles of every element we set in the array.
-   * Ex:
-   * [{ name: "", styles: {} }]
    * 
-   * @param elements Object with name and styles as props
+   * @param elements[] Object with name and styles as props
+   * @param elements[].Object.name class or Id of the html element
+   * @param elements[].Object.styles Styles to set
+   * @param elements[].Object.delay Delay the style change for "x" seconds
    */
   public changeStyles(elements: any[]) {
 
@@ -23,7 +24,13 @@ export class DomService {
 
       nodes.forEach(n => {
         styleKeys.forEach(sk => {
-          n.style.setProperty(sk, e['styles'][sk])
+          if ('delay' in e) {
+            setTimeout(() => {
+              n.style.setProperty(sk, e['styles'][sk])
+            }, e['delay'])
+          } else {
+            n.style.setProperty(sk, e['styles'][sk])
+          }
         })
       })
 

@@ -15,7 +15,7 @@ export class DiskSpaceBarComponent implements OnInit {
   public usagePercentage: number = 0;
   public barBgColor!: string; 
 
-  @Input() reloadBar: boolean = false;
+  @Input() refreshBar: boolean = false;
 
   constructor(private diskSpaceService: DiskSpaceService) {
     this.diskSpaceInfo = {} as IDiskSpace; //This fix 'cannot read of undefined'
@@ -27,11 +27,8 @@ export class DiskSpaceBarComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.reloadBar = changes['reloadBar'].currentValue;
-    this.updateDiskSpaceBarInfo(this.reloadBar);
-
-    changes['reloadBar'].currentValue = false;
-    this.reloadBar = false;
+    this.refreshBar = changes['refreshBar'].currentValue;
+    this.updateDiskSpaceBarInfo(this.refreshBar);
   }
 
   public changeBarState(percentage: number) {

@@ -2,7 +2,7 @@
 
     <div class="sidebar-items-container">
 
-        <a routerLink="../home" class="sidebar-item">
+        <a routerLink="/dashboard" class="sidebar-item">
             <div class="sidebar-icon">
                 <i class="fa fa-home"></i>
             </div>
@@ -13,7 +13,7 @@
 
         </a>
 
-        <a class="sidebar-item">
+        <a routerLink="my-files" class="sidebar-item">
             <div class="sidebar-icon">
                 <i class="fa fa-files-o"></i>
             </div>
@@ -46,6 +46,28 @@
 
         </a>
 
+        <a class="sidebar-item">
+            <div class="sidebar-icon">
+                <i class="fa fa-windows"></i>
+            </div>
+
+            <div class="sidebar-content"> 
+                <span> Office </span>
+            </div>
+
+        </a>  
+        
+        <a class="sidebar-item">
+            <div class="sidebar-icon">
+                <i class="fa fa-gears"></i>
+            </div>
+
+            <div class="sidebar-content"> 
+                <span> Settings </span>
+            </div>
+
+        </a>          
+
         <a (click)="logout()" style="cursor:pointer;" class="sidebar-item">
             <div class="sidebar-icon">
                 <i class="fa fa-sign-out"></i>
@@ -58,5 +80,13 @@
         </a> 
 
     </div>
+
+    <span class='text-center text-white'>
+        <i class='fa fa-heart text-danger' title="Made with Love"></i>
+        <i class='fa fa-long-arrow-right text-white ml-1' title="by"></i>
+        <a class='text-white' target="_blank" href="https://github.com/Nicoconte" title='Nicolas Conte'>
+            <i class='fa fa-github ml-1'></i>
+        </a>
+    </span>
 
 </div>
