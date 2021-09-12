@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import IFile from 'src/app/interfaces/files.interface';
 import { FileService } from 'src/app/services/file.service';
 
-import { convertISOToDate } from 'src/app/utils/utils';
+import { convertISOToDate, removeExtensionFromFilename } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-files-table',
@@ -35,6 +35,10 @@ export class FilesTableComponent implements OnInit {
 
   public formatToDate(date: string) { 
     return convertISOToDate(date);
+  }
+
+  public normalizeFilename(filename: string) {
+    return removeExtensionFromFilename(filename);
   }
 
   public updateFileTable(shouldUpdate: any) {

@@ -21,7 +21,7 @@
                 <td>Name</td>
                 <td>Extension</td>
                 <td>Size</td>
-                <td>Upload date</td>
+                <td>Date</td>
                 <td></td>
             </tr>
         </thead>
@@ -29,7 +29,7 @@
         <!-- ========================= -->
         <tbody>
             <tr *ngFor="let file of files">
-                <td>{{file.filename | slice:0:20 }}</td>
+                <td>{{normalizeFilename(file.filename) | slice:0:20 }}</td>
                 <td>{{file.extension}} </td>
                 <td>{{file.size == 0 ? "< 0" : file.size}} MB</td>
                 <td>{{formatToDate(file.uploaded_at)}}</td>

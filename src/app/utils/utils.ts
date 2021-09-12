@@ -19,3 +19,14 @@ export const convertISOToDate = (dateAsIso: string) => {
     return year + '-' + month + '-' + dt    
 }
 
+export const removeExtensionFromFilename = (filename: string) => {
+    let dotIndex = filename.lastIndexOf('.');
+
+    let nameWithoutExtension = "";
+    
+    for(let i = 0; i < dotIndex; i++) {
+        nameWithoutExtension += filename[i];
+    }
+
+    return nameWithoutExtension;
+}
